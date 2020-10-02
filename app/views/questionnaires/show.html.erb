@@ -1,0 +1,11 @@
+<h1>Welcome to an ugly form</h1>
+<%= form_for @questionnaire ,url: questionnaires_path do |form|  %>
+  <% @questionnaire.questions.each_with_index do |question, idx| %>
+    <h3><%= form.label "Choose Between those mysterious answers"  %></h3>
+    <p>
+      <%= radio_button_tag("[questionnaire_form][answers][#{idx}]", question[0]) %><%= question[0] %>
+      <%= radio_button_tag("[questionnaire_form][answers][#{idx}]", question[1]) %><%= question[1] %>
+    </p>
+  <% end %>
+  <%= form.submit 'submit your answers' %>
+<% end %>

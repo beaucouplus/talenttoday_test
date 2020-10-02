@@ -1,6 +1,9 @@
 class Answer < ApplicationRecord
   INTENSITY_TO_SCORE = { 1 => 1, 2 => 3 }.freeze
 
+  validates :chosen_dimension, :other_dimension, :intensity, :questionnaire_token, presence: true
+  validates :intensity, numericality: { only_integer: true, greater_than_or_equal_to: 1 }
+
   def self.scores_for(questionnaire_token:)
     answers = where(questionnaire_token: questionnaire_token).to_a
 

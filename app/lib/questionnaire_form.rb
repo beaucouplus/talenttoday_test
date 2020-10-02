@@ -18,7 +18,7 @@ class QuestionnaireForm
 
   def save
     answers.each do |key, answer|
-      Answer.create(chosen_dimension: answer,
+      Answer.create!(chosen_dimension: answer,
                     other_dimension: other_dimension(key, answer),
                     intensity: 1,
                     questionnaire_token: token)

@@ -13,9 +13,9 @@ class QuestionnairesController < ApplicationController
     @questionnaire = QuestionnaireForm.new({ token: session[:questionnaire_token] }.merge(questionnaire_params))
 
     if @questionnaire.save
-      redirect_to score_path(id: session[:questionnaire_token])
+      redirect_to score_path(id: @questionnaire.token)
     else
-      render :show
+      redirect_to questionnaires_path
     end
   end
 

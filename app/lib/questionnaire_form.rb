@@ -21,7 +21,7 @@ class QuestionnaireForm
   end
 
   def answers_to_record
-    answers.map do |key, answer|
+    @answers_to_record ||= answers.map do |key, answer|
       Answer.new(chosen_dimension: answer,
                  other_dimension: other_dimension(key, answer),
                  intensity: 1,
